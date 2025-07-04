@@ -41,10 +41,10 @@ jobs:
         run: npm run lint || echo "No lint script"
 
       - name: Build Docker images
-        run: docker-compose build
+        run: docker compose build
 
       - name: Run Docker containers (test)
-        run: docker-compose up -d
+        run: docker compose up -d
 
       - name: Wait for containers to be ready
         run: sleep 10
