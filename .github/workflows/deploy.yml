@@ -23,6 +23,10 @@ jobs:
         with:
           node-version: 18
 
+      - name: Debug: List files in client
+        working-directory: ./client
+        run: ls -la
+
       - name: Install server dependencies
         working-directory: ./server
         run: npm install
