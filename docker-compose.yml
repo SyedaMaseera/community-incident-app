@@ -1,0 +1,67 @@
+# version: '3.8'
+
+# services:
+#   backend:
+#     build: ./server
+#     ports:
+#       - "5000:5000"
+#     volumes:
+#       - ./server:/app
+#     environment:
+#       - NODE_ENV=development
+#     env_file:
+#       - .env
+#     depends_on:
+#       - mongo
+
+#   frontend:
+#     build: ./clientdocker compose build --no-cache
+#     ports:
+#       - "3000:80"
+#     depends_on:
+#       - backend
+
+#   mongo:
+#     image: mongo
+#     ports:
+#       - "27017:27017"
+#     volumes:
+#       - mongo-data:/data/db
+
+# volumes:
+#   mongo-data:
+#     external: true
+#     name: community-incident-app_mongo-data
+
+services:
+  mongo:
+    image: mongo
+    container_name: community-incident-app-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./server
+    container_name: community-incident-app-backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb://mongo:27017/COMMUNITY-INCIDENT-APP
+      - JWT_SECRET=your_jwt_secret
+      - ADMIN_SETUP_SECRET=mySuperSecretCode123!
+
+  frontend:
+    build: ./client
+    container_name: community-incident-app-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:
