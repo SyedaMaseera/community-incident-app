@@ -12,7 +12,8 @@ jobs:
     services:
       mongo:
         image: mongo
-        ports: ['27017:27017']
+        ports:
+          - 27017:27017
 
     steps:
       - name: Checkout source code
@@ -22,10 +23,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-
-      - name: Debug: List files in client
-        working-directory: ./client
-        run: ls -la
 
       - name: Install server dependencies
         working-directory: ./server
