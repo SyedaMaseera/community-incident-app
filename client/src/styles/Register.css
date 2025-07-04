@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('./assets/register-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Inter', sans-serif;
+}
+
+.form-container {
+  width: 420px;
+  padding: 2.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+  transform: scale(1.01);
+}
+
+.form-container h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 600;
+}
+
+.form-container input {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-container input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.4);
+}
+
+.form-container input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-container button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #22c55e;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.form-container button:hover {
+  background-color: #16a34a;
+  transform: translateY(-2px) scale(1.03);
+}

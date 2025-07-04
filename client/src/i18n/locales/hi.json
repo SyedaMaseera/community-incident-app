@@ -1,0 +1,19 @@
+{
+  "login": "लॉगिन",
+  "register": "पंजीकरण करें",
+  "email": "ईमेल",
+  "password": "पासवर्ड",
+  "name": "नाम",
+  "issue_title": "समस्या शीर्षक",
+  "description": "विवरण",
+  "category": "श्रेणी",
+  "location": "स्थान",
+  "upload_image": "छवि अपलोड करें",
+  "submit": "जमा करें",
+  "status": "स्थिति",
+  "open": "खुला",
+  "in_progress": "प्रगति में",
+  "resolved": "हल किया गया",
+  "logout": "लॉग आउट",
+  "language": "भाषा"
+}

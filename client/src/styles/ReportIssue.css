@@ -1,0 +1,118 @@
+/* styles/ReportIssue.css */
+/* This controls the full page */
+.full-background {
+  min-height: 100vh;
+  background: url('./assets/user-dashboard-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('./assets/user-dashboard-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+} */
+
+.custom-report-form {
+  background: rgba(0, 0, 0, 0.4); /* semi-transparent black */
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+
+.report-form {
+  width: 100%;
+  max-width: 700px;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+.report-form input,
+.report-form textarea,
+.report-form select {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+
+
+
+
+.report-form h2 {
+  color:white;
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.report-form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.report-form input,
+.report-form textarea,
+.report-form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.report-form input::placeholder,
+.report-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+.report-form button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background-color: #17A2B8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.report-form button:hover {
+  background-color: #117a8b;
+}
+
+.report-form .map-container {
+  margin-top: 20px;
+  height: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.report-form {
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(12px) !important;
+  color: white !important;
+}
+
+.report-form select:focus {
+  outline: none;
+  border-color: #17A2B8;
+  background-color: rgba(0, 0, 0, 0.5);
+}

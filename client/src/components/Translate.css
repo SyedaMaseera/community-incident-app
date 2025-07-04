@@ -1,0 +1,50 @@
+/* Hide weird Google branding */
+.goog-logo-link,
+.goog-te-gadget span {
+  display: none !important;
+}
+
+/* Remove blue underline */
+.goog-te-gadget {
+  color: transparent !important;
+}
+
+/* Style the dropdown container */
+#google_translate_element {
+  background-color: rgba(8, 8, 159, 0.615);
+  border-radius: 0.5rem;
+  /* padding: 0.3rem 0.6rem; */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #1f2937;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+#google_translate_element select {
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+}
+
+
+/* Dropdown button */
+/* #google_translate_element select { */
+  /* background: #fefcbf; light yellow */
+  /* border: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.9rem; */
+  /* color: #1a202c; dark gray */
+  /* cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  transition: background 0.3s ease-in-out;
+} */
+
+#google_translate_element select:hover {
+  background: #fde047; /* brighter yellow on hover */
+}

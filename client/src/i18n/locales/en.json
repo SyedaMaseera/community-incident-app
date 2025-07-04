@@ -1,0 +1,19 @@
+{
+  "login": "Login",
+  "register": "Register",
+  "email": "Email",
+  "password": "Password",
+  "name": "Name",
+  "issue_title": "Issue Title",
+  "description": "Description",
+  "category": "Category",
+  "location": "Location",
+  "upload_image": "Upload Image",
+  "submit": "Submit",
+  "status": "Status",
+  "open": "Open",
+  "in_progress": "In Progress",
+  "resolved": "Resolved",
+  "logout": "Logout",
+  "language": "Language"
+}

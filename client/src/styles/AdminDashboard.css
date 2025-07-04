@@ -1,0 +1,161 @@
+/* admin-dashboard.css */
+
+:root {
+  --glass-dark: rgba(0, 0, 0, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.6);
+  --blur: 20px;
+  --accent: #00ffff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   /* background-image: url('./assets/admin.jpg'); Ensure this image is correctly loaded */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.admin-dashboard {
+  padding: 3rem;
+  background-color: rgba(0, 0, 0, 0.6); /* fallback tint */
+  color: #eaeaea;
+  min-height: 100vh;
+}
+
+.admin-dashboard-box {
+  background: var(--glass-dark);
+  border-radius: 20px;
+  padding: 2rem 3rem;
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 12px 32px var(--glass-shadow);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+h2, h3 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+
+
+.issue-card {
+  background: rgba(20, 20, 20, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  color: #f0f0f0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px var(--glass-shadow);
+}
+
+.issue-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* .issue-card select, */
+.issue-card button {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid var(--glass-border);
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.issue-card select:hover,
+.issue-card button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.issue-card img {
+  width: 200px;
+  border-radius: 10px;
+  margin-top: 1rem;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  border: 1px solid var(--glass-border);
+}
+
+.issue-card img:hover {
+  transform: scale(1.03);
+}
+
+.leaflet-container {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 1rem;
+  border: 1px solid var(--glass-border);
+}
+
+select#sort {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid var(--glass-border);
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px #000;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* AdminDashboard.css */
+
+/* Styling the select tag */
+select {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem;
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  /* appearance: none; */
+}
+
+/* Styling the dropdown items */
+select option {
+  background-color: #1a1a1a;  /* dark background */
+  color: white;               /* white text */
+}
+
+/* Optional hover/focus effect */
+select:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+}

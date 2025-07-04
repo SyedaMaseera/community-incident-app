@@ -1,0 +1,18 @@
+#google_translate_wrapper {
+  position: fixed;
+  top: 20px; /* or bottom: 20px */
+  right: 20px;
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
