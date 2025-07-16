@@ -40,5 +40,3 @@ images:
   - gcr.io/$PROJECT_ID/community-frontend:$SHORT_SHA
 
 timeout: '900s'
-
-
