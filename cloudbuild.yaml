@@ -14,29 +14,30 @@ steps:
   # Build and push backend
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/community-backend:$SHORT_SHA', './server']
+
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/community-backend:$SHORT_SHA']
 
-    # Deploy backend
+  # Deploy backend with secrets
   - name: 'gcr.io/cloud-builders/gcloud'
-    env:
-    - DB_URL
-    - JWT_SECRET
-    - ADMIN_SETUP_SECRET
     args:
-    - run
-    - deploy
-    - community-backend
-    - --image=gcr.io/$PROJECT_ID/community-backend:$SHORT_SHA
-    - --platform=managed
-    - --region=us-central1
-    - --allow-unauthenticated
-    - --set-env-vars=PORT=8080,DB_URL=${DB_URL},JWT_SECRET=${JWT_SECRET},ADMIN_SETUP_SECRET=${ADMIN_SETUP_SECRET}
-
+      - run
+      - deploy
+      - community-backend
+      - --image=gcr.io/$PROJECT_ID/community-backend:$SHORT_SHA
+      - --platform=managed
+      - --region=us-central1
+      - --allow-unauthenticated
+      - --set-env-vars=PORT=8080,DB_URL=${DB_URL},JWT_SECRET=${JWT_SECRET},ADMIN_SETUP_SECRET=${ADMIN_SETUP_SECRET}
+    secretEnv:
+      - DB_URL
+      - JWT_SECRET
+      - ADMIN_SETUP_SECRET
 
   # Build and push frontend
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/community-frontend:$SHORT_SHA', './client']
+
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/community-frontend:$SHORT_SHA']
 
@@ -57,5 +58,3 @@ images:
   - gcr.io/$PROJECT_ID/community-frontend:$SHORT_SHA
 
 timeout: '900s'
-
-
