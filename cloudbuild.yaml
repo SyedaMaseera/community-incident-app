@@ -19,15 +19,19 @@ steps:
 
     # Deploy backend
   - name: 'gcr.io/cloud-builders/gcloud'
+    env:
+    - DB_URL
+    - JWT_SECRET
+    - ADMIN_SETUP_SECRET
     args:
-      - run
-      - deploy
-      - community-backend
-      - --image=gcr.io/$PROJECT_ID/community-backend:$SHORT_SHA
-      - --platform=managed
-      - --region=us-central1
-      - --allow-unauthenticated
-      - --set-env-vars=PORT=8080,DB_URL=${DB_URL},JWT_SECRET=${JWT_SECRET},ADMIN_SETUP_SECRET=${ADMIN_SETUP_SECRET}
+    - run
+    - deploy
+    - community-backend
+    - --image=gcr.io/$PROJECT_ID/community-backend:$SHORT_SHA
+    - --platform=managed
+    - --region=us-central1
+    - --allow-unauthenticated
+    - --set-env-vars=PORT=8080,DB_URL=${DB_URL},JWT_SECRET=${JWT_SECRET},ADMIN_SETUP_SECRET=${ADMIN_SETUP_SECRET}
 
 
   # Build and push frontend
