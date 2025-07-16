@@ -1,6 +1,14 @@
 options:
   logging: CLOUD_LOGGING_ONLY
 
+availableSecrets:
+  secretManager:
+    - versionName: projects/community-incident-app/secrets/DB_URL/versions/latest
+      env: DB_URL
+    - versionName: projects/community-incident-app/secrets/JWT_SECRET/versions/latest
+      env: JWT_SECRET
+    - versionName: projects/community-incident-app/secrets/ADMIN_SETUP_SECRET/versions/latest
+      env: ADMIN_SETUP_SECRET
 
 steps:
   # Build and push backend
@@ -44,6 +52,3 @@ images:
   - gcr.io/$PROJECT_ID/community-frontend:$SHORT_SHA
 
 timeout: '900s'
-
-
-
