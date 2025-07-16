@@ -17,7 +17,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/community-backend:$SHORT_SHA']
 
-  # Deploy backend
+    # Deploy backend
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - run
@@ -27,7 +27,8 @@ steps:
       - --platform=managed
       - --region=us-central1
       - --allow-unauthenticated
-      - --set-env-vars=PORT=8080,DB_URL=$DB_URL,JWT_SECRET=$JWT_SECRET,ADMIN_SETUP_SECRET=$ADMIN_SETUP_SECRET
+      - --set-env-vars=PORT=8080,DB_URL=${DB_URL},JWT_SECRET=${JWT_SECRET},ADMIN_SETUP_SECRET=${ADMIN_SETUP_SECRET}
+
 
   # Build and push frontend
   - name: 'gcr.io/cloud-builders/docker'
