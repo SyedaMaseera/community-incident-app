@@ -1,60 +1,80 @@
-options:
-  logging: CLOUD_LOGGING_ONLY
-
-availableSecrets:
-  secretManager:
-    - versionName: projects/community-incident-app/secrets/DB_URL/versions/latest
-      env: DB_URL
-    - versionName: projects/community-incident-app/secrets/JWT_SECRET/versions/latest
-      env: JWT_SECRET
-    - versionName: projects/community-incident-app/secrets/ADMIN_SETUP_SECRET/versions/latest
-      env: ADMIN_SETUP_SECRET
-
 steps:
-  # Build and push backend
+  # Build backend
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/community-backend:$SHORT_SHA', './server']
-
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/community-backend:$SHORT_SHA']
-
-  # Deploy backend
-  - name: 'gcr.io/cloud-builders/gcloud'
-    secretEnv:
-      - DB_URL
-      - JWT_SECRET
-      - ADMIN_SETUP_SECRET
     args:
-      - run
-      - deploy
-      - community-backend
-      - --image=gcr.io/$PROJECT_ID/community-backend:$SHORT_SHA
-      - --platform=managed
-      - --region=us-central1
-      - --allow-unauthenticated
-      - --set-env-vars=PORT=8080,DB_URL=${DB_URL},JWT_SECRET=${JWT_SECRET},ADMIN_SETUP_SECRET=${ADMIN_SETUP_SECRET}
+      [
+        'build',
+        '-t',
+        'gcr.io/community-incident-app/community-backend:$SHORT_SHA',
+        './server'
+      ]
 
-  # Build and push frontend
+  # Push backend image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/community-frontend:$SHORT_SHA', './client']
-
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/community-frontend:$SHORT_SHA']
-
-  # Deploy frontend
-  - name: 'gcr.io/cloud-builders/gcloud'
     args:
-      - run
-      - deploy
-      - community-frontend
-      - --image=gcr.io/$PROJECT_ID/community-frontend:$SHORT_SHA
-      - --platform=managed
-      - --region=us-central1
-      - --allow-unauthenticated
-      - --set-env-vars=REACT_APP_API_URL=https://community-backend-xxx.a.run.app
+      [
+        'push',
+        'gcr.io/community-incident-app/community-backend:$SHORT_SHA'
+      ]
+
+  # Deploy backend to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      [
+        'run',
+        'deploy',
+        'community-backend',
+        '--image',
+        'gcr.io/community-incident-app/community-backend:$SHORT_SHA',
+        '--region',
+        'us-central1',
+        '--platform',
+        'managed',
+        '--allow-unauthenticated',
+        '--set-env-vars',
+        'PORT=5000,MONGO_URI=mongodb+srv://syedamaseeratabassum:Maseera%4029@cluster0.mongodb.net/COMMUNITY-INCIDENT-APP?retryWrites=true&w=majority,JWT_SECRET=your_jwt_secret,ADMIN_SETUP_SECRET=mySuperSecretCode123!',
+        '--port',
+        '5000'
+      ]
+
+  # Build frontend
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/community-incident-app/community-frontend:$SHORT_SHA',
+        './client'
+      ]
+
+  # Push frontend image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'push',
+        'gcr.io/community-incident-app/community-frontend:$SHORT_SHA'
+      ]
+
+  # Deploy frontend to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      [
+        'run',
+        'deploy',
+        'community-frontend',
+        '--image',
+        'gcr.io/community-incident-app/community-frontend:$SHORT_SHA',
+        '--region',
+        'us-central1',
+        '--platform',
+        'managed',
+        '--allow-unauthenticated',
+        '--port',
+        '80'
+      ]
 
 images:
-  - gcr.io/$PROJECT_ID/community-backend:$SHORT_SHA
-  - gcr.io/$PROJECT_ID/community-frontend:$SHORT_SHA
-
-timeout: '900s'
+  - 'gcr.io/community-incident-app/community-backend:$SHORT_SHA'
+  - 'gcr.io/community-incident-app/community-frontend:$SHORT_SHA'
