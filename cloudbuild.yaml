@@ -76,7 +76,9 @@ steps:
         'managed',
         '--allow-unauthenticated',
         '--port',
-        '80'
+        '80',
+        '--set-env-vars',
+        'PORT=80'
       ]
 
 images:
