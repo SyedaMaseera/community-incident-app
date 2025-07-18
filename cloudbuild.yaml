@@ -62,6 +62,7 @@ steps:
         'gcr.io/community-incident-app/community-frontend:$SHORT_SHA',
         './client'
       ]
+      
 
   # Push frontend image
   - name: 'gcr.io/cloud-builders/docker'
