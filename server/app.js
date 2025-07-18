@@ -1,16 +1,22 @@
 
 require('dotenv').config();
+// require('dotenv').config({ path: '../.env' });
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
-
+require('dotenv').config({ path: path.resolve(__dirname, '.env.local') });
 const authRoutes = require('./routes/auth');
 const issueRoutes = require('./routes/issue');
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: '*', // for public access
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //ye
 
@@ -24,6 +30,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // })
 // .then(() => console.log('MongoDB connected'))
 // .catch(err => console.error(err));
+console.log("MONGO_URI is:", process.env.MONGO_URI); // helpful for debugging
+
+// const mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
