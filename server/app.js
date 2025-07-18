@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //ye
 
-app.use('/uploads', express.static('uploads')); //ye
+// app.use('/uploads', express.static('uploads')); //ye
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
@@ -32,9 +32,9 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.error('MongoDB connection error:', err));
 
-mongoose.connect('mongodb://mongo:27017/COMMUNITY-INCIDENT-APP')
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+// mongoose.connect('mongodb://mongo:27017/COMMUNITY-INCIDENT-APP')
+//   .then(() => console.log('MongoDB connected'))
+//   .catch((err) => console.error('MongoDB connection error:', err));
 
 // Routes
 app.use('/api/auth', authRoutes);
