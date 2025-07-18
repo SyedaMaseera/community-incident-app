@@ -48,8 +48,8 @@ WORKDIR /app
 
 COPY . .
 ARG REACT_APP_API_URL
-# ENV REACT_APP_API_URL=$REACT_APP_API_URL
-CMD envsubst '$REACT_APP_API_URL' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+# CMD envsubst '$REACT_APP_API_URL' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
 
 
 RUN npm install --legacy-peer-deps
