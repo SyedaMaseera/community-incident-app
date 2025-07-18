@@ -59,13 +59,25 @@ services:
     
 
 
-  frontend:
-    build: ./client
-    container_name: community-incident-app-frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
+#   frontend:
+#     build: ./client
+#     container_name: community-incident-app-frontend
+#     ports:
+#       - "3000:8080"
+#     depends_on:
+#       - backend
 
-volumes:
-  mongo-data:
+# volumes:
+#   mongo-data:
+
+  frontend:
+  build:
+    context: ./client
+    args:
+      REACT_APP_API_URL: http://community-incident-app-backend:5000/api/
+  environment:
+    - REACT_APP_API_URL=http://community-incident-app-backend:5000/api/
+  ports:
+    - "3000:8080"
+  depends_on:
+    - backend

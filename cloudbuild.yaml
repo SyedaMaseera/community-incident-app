@@ -57,7 +57,7 @@ steps:
       [
         'build',
         '--build-arg',
-        'REACT_APP_API_URL=https://<your-backend-service>.a.run.app',
+        'REACT_APP_API_URL=https://community-backend-402506450695.us-central1.run.app',
         '-t',
         'gcr.io/community-incident-app/community-frontend:$SHORT_SHA',
         './client'
