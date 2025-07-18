@@ -50,7 +50,7 @@ jobs:
         run: sleep 10
 
       - name: Check if frontend is running
-        run: curl -I http://localhost:3000 || exit 1
+        run: curl -I http://localhost:8080 || exit 1
 
       - name: Check if backend is running
         run: curl -I http://localhost:5000 || exit 1
