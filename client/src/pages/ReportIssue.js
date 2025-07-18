@@ -93,7 +93,8 @@ export default function ReportIssue() {
       //   },
       // });
 
-      await axios.post('http://localhost:5000/api/issues', formData, {
+      // await axios.post('http://localhost:5000/api/issues', formData, {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/issues`, formData, {
   headers: {
     Authorization: `Bearer ${token}`, // ✅ Only set auth manually
     // Do NOT set Content-Type here

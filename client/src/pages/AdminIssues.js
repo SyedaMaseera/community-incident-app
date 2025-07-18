@@ -11,7 +11,8 @@ function AdminIssues() {
   useEffect(() => {
     const fetchIssues = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/issues', {
+        // const res = await axios.get('http://localhost:5000/api/issues', {
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/issues`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setIssues(res.data);

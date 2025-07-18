@@ -18,7 +18,8 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', form);
+      // const res = await axios.post('http://localhost:5000/api/auth/login', form);
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/login`, form);
       setMsg('Login successful! Redirecting...');
       
       // You can save user info here

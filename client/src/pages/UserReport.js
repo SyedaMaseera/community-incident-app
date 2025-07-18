@@ -17,7 +17,8 @@ function UserReport() {
     }
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/issues',
+        // 'http://localhost:5000/api/issues',
+        `${process.env.REACT_APP_BACKEND_URL}/api/issues`,
         { title, description },
         { headers: { Authorization: `Bearer ${token}` } }
       );

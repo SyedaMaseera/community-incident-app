@@ -17,7 +17,8 @@ function AdminDashboard() {
     const fetchAllIssues = async () => {
       const token = localStorage.getItem('token');
       try {
-        const res = await axios.get('http://localhost:5000/api/issues', {
+        // const res = await axios.get('http://localhost:5000/api/issues', {
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/issues`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setIssues(res.data);
@@ -33,7 +34,8 @@ function AdminDashboard() {
     const token = localStorage.getItem('token');
     try {
       await axios.put(
-        `http://localhost:5000/api/issues/${id}`,
+        // `http://localhost:5000/api/issues/${id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/issues/${id}`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -87,7 +89,8 @@ function AdminDashboard() {
       {issue.image && (
         <>
           <img
-            src={`http://localhost:5000/uploads/${issue.image}`}
+            // src={`http://localhost:5000/uploads/${issue.image}`}
+            src={`${process.env.REACT_APP_BACKEND_URL}/uploads/${issue.image}`}
             alt="Issue"
             style={{
               width: '200px',
@@ -96,7 +99,9 @@ function AdminDashboard() {
               borderRadius: '8px',
               cursor: 'pointer'
             }}
-            onClick={() => setSelectedImage(`http://localhost:5000/uploads/${issue.image}`)}
+            // onClick={() => setSelectedImage(`http://localhost:5000/uploads/${issue.image}`)}
+            onClick={() => setSelectedImage(`${process.env.REACT_APP_BACKEND_URL}/uploads/${issue.image}`)}
+
           />
         </>
       )}

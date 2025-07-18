@@ -15,7 +15,8 @@ const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      // const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/login`, { email, password });
       setUser(res.data.user);
       localStorage.setItem('user', JSON.stringify(res.data.user));
       if (res.data.user.role === 'admin') navigate('/admin');

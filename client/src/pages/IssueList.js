@@ -35,7 +35,8 @@ const ReportIssue = () => {
     if (image) formData.append('image', image);
 
     try {
-      await axios.post('http://localhost:5000/api/issues/report', formData, {
+      // await axios.post('http://localhost:5000/api/issues/report', formData, {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/issues/report`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setMsg('Issue reported successfully!');
