@@ -55,16 +55,16 @@ steps:
   #       './client'
   #     ]
       # Build frontend with backend API URL
-    - name: 'gcr.io/cloud-builders/docker'
-      args:
-        [
-          'build',
-          '-t',
-          'gcr.io/community-incident-app/community-frontend:$SHORT_SHA',
-          '--build-arg',
-          'REACT_APP_API_URL=https://community-backend-402506450695.us-central1.run.app/api/',
-          './client'
-        ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/community-incident-app/community-frontend:$SHORT_SHA',
+        '--build-arg',
+        'REACT_APP_API_URL=https://community-backend-402506450695.us-central1.run.app/api/',
+        './client'
+      ]
 
   # Push frontend image
   - name: 'gcr.io/cloud-builders/docker'
