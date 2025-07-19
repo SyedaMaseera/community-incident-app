@@ -15,7 +15,7 @@ const app = express();
 app.use(cors({
   origin: '*', // for public access
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true
+  // credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //ye
