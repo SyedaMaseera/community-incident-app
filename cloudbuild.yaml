@@ -62,7 +62,7 @@ steps:
         '-t',
         'gcr.io/community-incident-app/community-frontend:$SHORT_SHA',
         '--build-arg',
-        'REACT_APP_API_URL=https://community-backend-402506450695.us-central1.run.app/api/',
+        'REACT_APP_BACKEND_URL=https://community-backend-402506450695.us-central1.run.app/api/',
         './client'
       ]
 
